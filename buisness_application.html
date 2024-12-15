@@ -148,8 +148,8 @@ body {
     <label for="foundingYear">Founding Year</label>
     <input type="text" id="foundingYear" placeholder="Enter founding year">
 
-    <label for="Email">Company Email</label>
-    <input type="text" id="comapny-email" placeholder="Enter Comapny Email">
+    <label for="email">Company Email</label>
+    <input type="text" id="email" placeholder="Enter Comapny Email">
 
     <label for="businessField">Business Field</label>
     <input type="text" id="businessField" placeholder="Enter your business field">
@@ -197,11 +197,12 @@ body {
     const formData = {
       companyName: document.getElementById('companyName').value,
       foundingYear: document.getElementById('foundingYear').value,
+      email: document.getElementById('email').value,
       businessField: document.getElementById('businessField').value,
       websiteURL: document.getElementById('websiteURL').value,
       linkedinURL: document.getElementById('linkedinURL').value,
       aboutCompany: document.getElementById('aboutCompany').value,
-      membershipTier: document.getElementById('membershipTier').value
+      // membershipTier: document.getElementById('membershipTier').value
     };
 
     // Save the data to Firebase
