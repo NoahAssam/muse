@@ -1,9 +1,11 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Muse - Login</title>
+  <script src="https://www.gstatic.com/firebasejs/9.22.1/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.22.1/firebase-auth.js"></script>
   <style>
     /* General Reset */
     * {
@@ -42,21 +44,24 @@
     .container {
       text-align: center;
       max-width: 600px;
-      margin-top: 100px; /* Adjust for banner height */
+      margin-top: 126px; /* Adjust for banner height */
     }
 
     .container h1 {
-      font-size: 48px;
+      font-size: 46px;
       font-weight: bold;
       margin-bottom: 10px;
     }
 
-    .container p {
-      font-size: 18px;
+    .dynamic-text-container {
       margin-bottom: 10px;
-      line-height: 1.8;
-      white-space: pre-line;
+    }
+
+    .dynamic-text {
+      font-size: 18px;
       color: #ccc;
+      line-height: 2.2;
+      white-space: pre-line; /* Allows the line break */
     }
 
     .btn {
@@ -85,52 +90,94 @@
 
     .footer-text {
       margin-top: 20px;
-      font-size: 1px;
+      font-size: 14px;
       color: #666;
+    }
+
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 1;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      overflow: auto;
+      background-color: rgba(0, 0, 0, 0.6);
+    }
+
+    .modal-content {
+      background-color: #101828;
+      padding: 20px;
+      border: 1px solid white;
+      width: 50%;
+      border-radius: 10px;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      z-index: 1;
+    }
+
+    .close {
+      color: #aaa;
+      float: right;
+      font-size: 28px;
+      font-weight: bold;
+    }
+
+    .close:hover,
+    .close:focus {
+      color: #000;
+      text-decoration: none;
+      cursor: pointer;
+    }
+
+    .modal-button {
+      background-color: white;
+      color: black;
+      padding: 14px 20px;
+      margin: 8px 0;
+      border: none;
+      cursor: pointer;
+      width: 100%;
+      border-radius: 4px;
+    }
+
+    .modal-button:hover {
+      background-color: #e4e7eb;
+      color: #000;
     }
   </style>
 </head>
 <body>
+  <!-- Banner -->
+  <div class="banner">
+    Muse
+  </div>
 
-<!-- Banner -->
-<div class="banner">
-  Muse
-</div>
+  <div class="container">
+    <h1>Muse</h1>
+    <div class="dynamic-text-container">
+      <p class="dynamic-text" id="dynamicText">The Social Network for Creatives,
+Find your people, Connect and Collaborate.</p>
+    </div>
+    <button class="btn" id="artist">Apply AS ARTIST</button>
+    <button class="btn" id="business">APPLY AS BUSINESS</button>
+    <p class="footer-text">Membership is by invitation or application only</p>
+  </div>
 
-<div class="container">
-  <!-- App Title -->
-  <h1>Muse</h1>
+  <script type="module">
+    // Apply Membership Button
+    document.getElementById("artist").addEventListener("click", () => {
+      window.location.href = "artist_application.html";
+    });
 
-  <!-- Subtitle -->
-  <p>The Social Network for Creatives,</p>
-  <p>Find your people, Connect and Collaborate</p>
-
-  <!-- Buttons for membership and login -->
-  <button class="btn" id="applyAsArtist">Apply as Artist</button>
-  <button class="btn" id="memberLogin">Apply as Business</button>
-
-  <!-- Footer Text -->
-<!--   <p class="footer-text">Membership is by invitation or application only</p> -->
-</div>
-
-<script>
-  window.addEventListener("load", () => {
-    console.log("Check Firebase Authentication here.");
-    // Add Firebase authentication logic here if needed
-  });
-
-  document.getElementById("applyAsArtist").addEventListener("click", () => {
-    window.location.href = "artist_application.html"; // Redirect to the artist application page
-    console.log("Navigate to Artist Application page.");
-  });
-
-  document.getElementById("memberLogin").addEventListener("click", () => {
-    window.location.href = "buisness_application.html";
-    console.log("Navigate to Login page.");
-  });
-</script>
-
+    // Member Login Modal Handling
+    document.getElementById("business").addEventListener("click", () => {
+      window.location.href = "business_application.html";
+    });
+  </script>
 </body>
 </html>
-
 
