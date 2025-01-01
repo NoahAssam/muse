@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -13,15 +13,14 @@
 }
 
 body {
-  font-family: 'Roboto', Arial, sans-serif; /* Modern font */
-  background-color: #000000; /* Black background */
-  color: #FFFFFF; /* White text */
+  font-family: 'Roboto', Arial, sans-serif;
+  background-color: #000000;
+  color: #FFFFFF;
   display: flex;
   justify-content: center;
   align-items: center;
-  min-height: 100vh; /* Ensure full-screen height */
+  min-height: 100vh;
 }
-
 
 .banner {
   width: 100%;
@@ -39,34 +38,28 @@ body {
   box-shadow: 0 1px 2px rgba(255, 255, 255, 0.1);
 }
 
-
-/* Form container styles */
 .form-container {
   width: 100%;
   max-width: 600px;
   padding: 25px;
-  color: #FFFFFF; /* White text color */
-  margin-top: 100px; /* Adjust for banner height */
-
+  color: #FFFFFF;
+  margin-top: 100px;
 }
 
-/* Form header styles */
 .form-container h1 {
-  font-size: 28px; /* Header font size */
+  font-size: 28px;
   font-weight: bold;
   margin-bottom: 20px;
-  color: #FFFFFF; /* White text for header */
+  color: #FFFFFF;
 }
 
-/* Labels */
 .form-container label {
-  display: block;
+  display: flex;
+  align-items: center;
   margin-bottom: 8px;
   font-weight: 600;
-  color: #FFFFFF; /* White labels */
 }
 
-/* Input fields and text areas */
 .form-container input,
 .form-container select,
 .form-container textarea {
@@ -74,30 +67,29 @@ body {
   padding: 12px 15px;
   margin-bottom: 15px;
   border-radius: 8px;
-  border: 1px solid #E5E7EB; /* Subtle border for structure */
-  background-color: #FFFFFF; /* White background for input bubbles */
-  color: #000000; /* Black text inside inputs */
+  border: 1px solid #E5E7EB;
+  background-color: #FFFFFF;
+  color: #000000;
   font-size: 14px;
 }
 
 .form-container textarea {
   height: 120px;
-  resize: none; /* Disable resize */
+  resize: none;
 }
 
 .form-container input::placeholder,
 .form-container textarea::placeholder {
-  color: #6B7280; /* Slightly gray placeholder text */
+  color: #6B7280;
 }
 
-/* Submit button */
 .form-container button {
   width: 100%;
   padding: 15px;
   font-size: 16px;
   font-weight: bold;
-  background-color: #FFFFFF; /* White button */
-  color: #000000; /* Black text */
+  background-color: #FFFFFF;
+  color: #000000;
   border: none;
   border-radius: 8px;
   cursor: pointer;
@@ -105,13 +97,12 @@ body {
 }
 
 .form-container button:hover {
-  background-color: #E5E7EB; /* Light gray hover */
+  background-color: #E5E7EB;
   color: #000000;
 }
 
-/* Link styles */
 .form-container a {
-  color: #3B82F6; /* Blue link */
+  color: #3B82F6;
   text-decoration: none;
   font-size: 14px;
   margin-top: 10px;
@@ -120,26 +111,17 @@ body {
 }
 
 .form-container a:hover {
-  text-decoration: underline; /* Underline on hover */
+  text-decoration: underline;
 }
-
-
   </style>
   <!-- Firebase SDKs -->
   <script src="https://www.gstatic.com/firebasejs/8.0.0/firebase-app.js"></script>
   <script src="https://www.gstatic.com/firebasejs/8.0.0/firebase-database.js"></script>
 </head>
 <body>
-
-<!-- Banner -->
-<div class="banner">
-  Muse
-</div>
-
+<div class="banner">Muse</div>
 <div class="form-container">
   <h1>Artist Membership Application</h1>
-
-  <!-- Form Fields -->
   <form id="artistForm">
     <label for="fullName">Full Name</label>
     <input type="text" id="fullName" placeholder="Your full name" required>
@@ -160,42 +142,37 @@ body {
       <option value="visual-arts">Visual Arts</option>
       <option value="writing">Writing</option>
       <option value="performance-arts">Performance Arts</option>
-      <option value="fashion-designe">Fashion Designer</option>
+      <option value="fashion-designer">Fashion Designer</option>
       <option value="photographer">Photographer</option>
-      <option value="video-grapher">Videographer</option>
+      <option value="videographer">Videographer</option>
       <option value="music-producer">Music Producer</option>
       <option value="furniture-designer">Furniture Designer</option>
-      <option value="Film-maker">Filmmaker</option>
-      <option value="Graphic-Designer">Graphic Designer</option>
-      <option value="Model">Model</option>
-      <option value="Journalist">Journalist</option>
-      <option value="DJ">DJ</option>
-      <option value="Boutique">Boutique</option>
+      <option value="filmmaker">Filmmaker</option>
+      <option value="graphic-designer">Graphic Designer</option>
+      <option value="model">Model</option>
+      <option value="journalist">Journalist</option>
+      <option value="dj">DJ</option>
+      <option value="boutique">Boutique</option>
     </select>
 
     <label for="instagramHandle">Instagram Handle</label>
     <input type="text" id="instagramHandle" placeholder="@yourusername" required>
 
     <label for="portfolioUrl">Portfolio URL</label>
-    <input type="text" id="portfolioUrl" placeholder="https://your-portfolio.com" >
+    <input type="text" id="portfolioUrl" placeholder="https://your-portfolio.com">
 
     <label for="aboutYou">About You</label>
     <textarea id="aboutYou" placeholder="Tell us about yourself" required></textarea>
 
-<!--     <label for="membershipTier">Membership Tier</label>
-    <select id="membershipTier">
-      <option value="" disabled selected>Select your membership tier</option>
-      <option value="basic">Basic - Free</option>
-      <option value="pro">Pro - $9.99/month</option>
-      <option value="elite">Elite - $49.99/month</option>
-    </select> -->
-
-<!--     <a href="artist_tiers.html">View Artist Membership Tiers</a> -->
+    <!-- Checkbox for terms and conditions -->
+    <label for="termsAgree">
+      <input type="checkbox" id="termsAgree" required>
+       <a href="terms.html" target="_blank"> I agree to the terms and conditions</a>
+    </label>
 
     <button type="submit">Submit Application</button>
   </form>
 </div>
-
 <script>
   // Your web app's Firebase configuration
   const firebaseConfig = {
@@ -203,7 +180,7 @@ body {
     authDomain: "myproject-111-37a6f.firebaseapp.com",
     databaseURL: "https://myproject-111-37a6f-default-rtdb.firebaseio.com/",
     projectId: "myproject-111-37a6f",
-    storageBucket: "myproject-111-37a6f.appspot.com", // Corrected Storage Bucket URL
+    storageBucket: "myproject-111-37a6f.appspot.com",
     messagingSenderId: "299485718150",
     appId: "1:299485718150:web:49111f7d670aee2e269307",
     measurementId: "G-MES7YXESBQ"
@@ -212,34 +189,28 @@ body {
   // Initialize Firebase
   firebase.initializeApp(firebaseConfig);
 
-  document.addEventListener('DOMContentLoaded', function () {
-    document.getElementById('artistForm').addEventListener('submit', function(event) {
-      event.preventDefault(); // Prevent default form submission behavior
+  document.getElementById('artistForm').addEventListener('submit', function(event) {
+    event.preventDefault(); // Prevent default form submission behavior
+    const formData = {
+      fullName: document.getElementById('fullName').value,
+      age: document.getElementById('age').value,
+      phonenumber: document.getElementById('phonenumber').value,
+      email: document.getElementById('email').value,
+      creativeField: document.getElementById('creativeField').value,
+      instagramHandle: document.getElementById('instagramHandle').value,
+      portfolioUrl: document.getElementById('portfolioUrl').value,
+      aboutYou: document.getElementById('aboutYou').value
+    };
 
-      const formData = {
-        fullName: document.getElementById('fullName').value,
-        age: document.getElementById('age').value,
-        phonenumber: document.getElementById('phonenumber').value,
-        email: document.getElementById('email').value,
-        creativeField: document.getElementById('creativeField').value,
-        instagramHandle: document.getElementById('instagramHandle').value,
-        portfolioUrl: document.getElementById('portfolioUrl').value,
-        aboutYou: document.getElementById('aboutYou').value,
-        // membershipTier: document.getElementById('membershipTier').value
-      };
-
-      // Save the data to Firebase
-      firebase.database().ref('artists').push().set(formData).then(() => {
-        console.log('Data saved successfully!');
-        window.location.href = 'After_submit_prophile.html'; // Redirect after saving data
-      }).catch(error => {
-        console.log('Error saving data: ', error);
-      });
+    // Save the data to Firebase
+    firebase.database().ref('artists').push().set(formData).then(() => {
+      console.log('Data saved successfully!');
+      window.location.href = 'After_submit_profile.html'; // Redirect after saving data
+    }).catch(error => {
+      console.log('Error saving data: ', error);
     });
   });
 </script>
-
 </body>
 </html>
-
 
