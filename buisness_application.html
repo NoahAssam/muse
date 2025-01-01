@@ -1,129 +1,123 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Muse - Business Membership Application</title>
   <style>
-/* General Reset */
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
+    /* General Reset */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
 
-body {
-  font-family: 'Roboto', Arial, sans-serif; /* Modern font */
-  background-color: #000000; /* Black background */
-  color: #FFFFFF; /* White text */
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  min-height: 100vh; /* Ensure full height */
-  overflow-y: auto; /* Enable vertical scrolling */
-  padding: 10px;
-}
+    body {
+      font-family: 'Roboto', Arial, sans-serif;
+      background-color: #000000;
+      color: #FFFFFF;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      overflow-y: auto;
+      padding: 10px;
+    }
 
-.banner {
-  width: 100%;
-  padding: 15px 20px;
-  background-color: #000;
-  color: #fff;
-  font-size: 24px;
-  font-weight: bold;
-  text-align: left;
-  position: fixed;
-  top: 0;
-  left: 0;
-  z-index: 1000;
-  border-bottom: 1px solid #333;
-  box-shadow: 0 1px 2px rgba(255, 255, 255, 0.1);
-}
+    .banner {
+      width: 100%;
+      padding: 15px 20px;
+      background-color: #000;
+      color: #fff;
+      font-size: 24px;
+      font-weight: bold;
+      text-align: left;
+      position: fixed;
+      top: 0;
+      left: 0;
+      z-index: 1000;
+      border-bottom: 1px solid #333;
+      box-shadow: 0 1px 2px rgba(255, 255, 255, 0.1);
+    }
 
-/* Form container styles */
-.form-container {
-  width: 100%;
-  max-width: 600px;
-  padding: 25px;
-  color: #FFFFFF; /* White text color */
-  margin-top: 100px; /* Adjust for banner height */
+    /* Form container styles */
+    .form-container {
+      width: 100%;
+      max-width: 600px;
+      padding: 25px;
+      color: #FFFFFF;
+      margin-top: 100px;
+    }
 
-}
+    /* Form header styles */
+    .form-container h1 {
+      font-size: 28px;
+      font-weight: bold;
+      margin-bottom: 20px;
+    }
 
-/* Form header styles */
-.form-container h1 {
-  font-size: 28px; /* Header font size */
-  font-weight: bold;
-  margin-bottom: 20px;
-  color: #FFFFFF; /* White text for header */
-}
+    /* Labels and input fields */
+    .form-container label {
+      display: block;
+      margin-bottom: 8px;
+      font-weight: 600;
+    }
 
-/* Labels */
-.form-container label {
-  display: block;
-  margin-bottom: 8px;
-  font-weight: 600;
-  color: #FFFFFF; /* White labels */
-}
+    .form-container input,
+    .form-container select,
+    .form-container textarea {
+      width: 100%;
+      padding: 12px 15px;
+      margin-bottom: 15px;
+      border-radius: 8px;
+      border: 1px solid #E5E7EB;
+      background-color: #FFFFFF;
+      color: #000000;
+      font-size: 14px;
+    }
 
-/* Input fields and text areas */
-.form-container input,
-.form-container select,
-.form-container textarea {
-  width: 100%;
-  padding: 12px 15px;
-  margin-bottom: 15px;
-  border-radius: 8px;
-  border: 1px solid #E5E7EB; /* Subtle border for structure */
-  background-color: #FFFFFF; /* White background for input bubbles */
-  color: #000000; /* Black text inside inputs */
-  font-size: 14px;
-}
+    .form-container textarea {
+      height: 120px;
+      resize: none;
+    }
 
-.form-container textarea {
-  height: 120px;
-  resize: none; /* Disable resize */
-}
+    .form-container input::placeholder,
+    .form-container textarea::placeholder {
+      color: #6B7280;
+    }
 
-.form-container input::placeholder,
-.form-container textarea::placeholder {
-  color: #6B7280; /* Slightly gray placeholder text */
-}
+    /* Submit button */
+    .form-container button {
+      width: 100%;
+      padding: 15px;
+      font-size: 16px;
+      font-weight: bold;
+      background-color: #FFFFFF;
+      color: #000000;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
 
-/* Submit button */
-.form-container button {
-  width: 100%;
-  padding: 15px;
-  font-size: 16px;
-  font-weight: bold;
-  background-color: #FFFFFF; /* White button */
-  color: #000000; /* Black text */
-  border: none;
-  border-radius: 8px;
-  cursor: pointer;
-  transition: all 0.3s ease;
-}
+    .form-container button:hover {
+      background-color: #E5E7EB;
+      color: #000000;
+    }
 
-.form-container button:hover {
-  background-color: #E5E7EB; /* Light gray hover */
-  color: #000000;
-}
+    /* Link styles */
+    .form-container a {
+      color: #3B82F6;
+      text-decoration: none;
+      font-size: 14px;
+      margin-top: 10px;
+      display: block;
+      text-align right;
+    }
 
-/* Link styles */
-.form-container a {
-  color: #3B82F6; /* Blue link */
-  text-decoration: none;
-  font-size: 14px;
-  margin-top: 10px;
-  display: block;
-  text-align: right;
-}
-
-.form-container a:hover {
-  text-decoration: underline; /* Underline on hover */
-}
-
-
+    .form-container a:hover {
+      text-decoration: underline;
+    }
   </style>
   <!-- Firebase SDKs -->
   <script src="https://www.gstatic.com/firebasejs/8.0.0/firebase-app.js"></script>
@@ -132,68 +126,60 @@ body {
 <body>
 
 <!-- Banner -->
-<div class="banner">
-  Muse
-</div>
-
+<div class="banner">Muse</div>
 
 <div class="form-container">
   <h1>Business Membership Application</h1>
-
-
   <form id="businessForm">
+    <!-- Form fields -->
     <label for="companyName">Company Name</label>
-    <input type="text" id="companyName" placeholder="Enter your company name">
+    <input type="text" id="companyName" placeholder="Enter your company name" required>
 
     <label for="foundingYear">Founding Year</label>
-    <input type="text" id="foundingYear" placeholder="Enter founding year">
+    <input type="text" id="foundingYear" placeholder="Enter founding year" required>
 
     <label for="email">Company Email</label>
-    <input type="text" id="email" placeholder="Enter company email">
+    <input type="text" id="email" placeholder="Enter company email" required>
 
     <label for="businessField">Business Field</label>
-    <input type="text" id="businessField" placeholder="Enter your business field">
+    <input type="text" id="businessField" placeholder="Enter your business field" required>
 
     <label for="websiteURL">Website URL</label>
-    <input type="text" id="websiteURL" placeholder="https://www.example.com">
+    <input type="text" id="websiteURL" placeholder="https://www.example.com" required>
 
     <label for="linkedinURL">LinkedIn Company Page URL</label>
-    <input type="text" id="linkedinURL" placeholder="https://www.linkedin.com/company/example">
+    <input type="text" id="linkedinURL" placeholder="https://www.linkedin.com/company/example" required>
 
     <label for="aboutCompany">About Your Company</label>
-    <textarea id="aboutCompany" placeholder="Tell us about your company"></textarea>
+    <textarea id="aboutCompany" placeholder="Tell us about your company" required></textarea>
 
-<!--     <label for="membershipTier">Membership Tier</label>
-    <select id="membershipTier">
-      <option disabled selected>Select your membership tier</option>
-      <option value="premium">Premium - $49.99/month</option>
-      <option value="elite">Elite - $99.99/month</option>
-    </select> -->
+    <!-- Checkbox for terms and conditions -->
+    <label for="termsAgree" style="display: flex; align-items: center; margin-top: 10px;">
+      <input type="checkbox" id="termsAgree" required>
+       <a href="terms.html" target="_blank">I agree to the terms and conditions</a>
+    </label>
 
-<!--     <a href="buisness_tiers.html" class="link">View Business Membership Tiers</a> -->
     <button type="submit">Submit Application</button>
   </form>
 </div>
 
 <script>
-  // Your web app's Firebase configuration
+  // Firebase configuration
   const firebaseConfig = {
     apiKey: "AIzaSyB6cbUJWXsZVgQDWHkYvnRTXGxvP23aI-s",
     authDomain: "myproject-111-37a6f.firebaseapp.com",
     databaseURL: "https://myproject-111-37a6f-default-rtdb.firebaseio.com/",
     projectId: "myproject-111-37a6f",
-    storageBucket: "myproject-111-37a6f.appspot.com", // Corrected Storage Bucket URL
+    storageBucket: "myproject-111-37a6f.appspot.com",
     messagingSenderId: "299485718150",
     appId: "1:299485718150:web:49111f7d670aee2e269307",
     measurementId: "G-MES7YXESBQ"
   };
 
-  // Initialize Firebase
   firebase.initializeApp(firebaseConfig);
 
   document.getElementById('businessForm').addEventListener('submit', function(event) {
-    event.preventDefault(); // Prevent default form submission behavior
-
+    event.preventDefault();
     const formData = {
       companyName: document.getElementById('companyName').value,
       foundingYear: document.getElementById('foundingYear').value,
@@ -201,11 +187,8 @@ body {
       businessField: document.getElementById('businessField').value,
       websiteURL: document.getElementById('websiteURL').value,
       linkedinURL: document.getElementById('linkedinURL').value,
-      aboutCompany: document.getElementById('aboutCompany').value,
-      // membershipTier: document.getElementById('membershipTier').value
+      aboutCompany: document.getElementById('aboutCompany').value
     };
-
-    // Save the data to Firebase
     firebase.database().ref('businessMemberships').push().set(formData).then(() => {
       console.log('Data saved successfully!');
       window.location.href = 'After_submit_prophile.html'; // Redirect after saving data
