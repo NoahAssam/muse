@@ -5,212 +5,215 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Artist Membership Application</title>
   <style>
-  /* General Reset */
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
+    /* General Reset */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
 
-body {
-  font-family: 'Roboto', Arial, sans-serif;
-  background-color: #000000;
-  color: #FFFFFF;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  min-height: 100vh;
-}
+    body {
+      font-family: 'Roboto', Arial, sans-serif;
+      background-color: #000000;
+      color: #FFFFFF;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+    }
 
-.banner {
-  width: 100%;
-  padding: 15px 20px;
-  background-color: #000;
-  color: #fff;
-  font-size: 24px;
-  font-weight: bold;
-  text-align: left;
-  position: fixed;
-  top: 0;
-  left: 0;
-  z-index: 1000;
-  border-bottom: 1px solid #333;
-  box-shadow: 0 1px 2px rgba(255, 255, 255, 0.1);
-}
+    .banner {
+      width: 100%;
+      padding: 15px 20px;
+      background-color: #000;
+      color: #fff;
+      font-size: 24px;
+      font-weight: bold;
+      text-align: left;
+      position: fixed;
+      top: 0;
+      left: 0;
+      z-index: 1000;
+      border-bottom: 1px solid #333;
+      box-shadow: 0 1px 2px rgba(255, 255, 255, 0.1);
+    }
 
-.form-container {
-  width: 100%;
-  max-width: 600px;
-  padding: 25px;
-  color: #FFFFFF;
-  margin-top: 100px;
-}
+    .form-container {
+      width: 100%;
+      max-width: 600px;
+      padding: 25px;
+      color: #FFFFFF;
+      margin-top: 100px; /* Adjust for banner height */
+    }
 
-.form-container h1 {
-  font-size: 28px;
-  font-weight: bold;
-  margin-bottom: 20px;
-  color: #FFFFFF;
-}
+    .form-container h1 {
+      font-size: 28px;
+      font-weight: bold;
+      margin-bottom: 20px;
+    }
 
-.form-container label {
-  display: flex;
-  align-items: center;
-  margin-bottom: 8px;
-  font-weight: 600;
-}
+    .form-container label {
+      display: block;
+      margin-bottom: 8px;
+      font-weight: 600;
+    }
 
-.form-container input,
-.form-container select,
-.form-container textarea {
-  width: 100%;
-  padding: 12px 15px;
-  margin-bottom: 15px;
-  border-radius: 8px;
-  border: 1px solid #E5E7EB;
-  background-color: #FFFFFF;
-  color: #000000;
-  font-size: 14px;
-}
+    .form-container input,
+    .form-container select,
+    .form-container textarea {
+      width: 100%;
+      padding: 12px 15px;
+      margin-bottom: 15px;
+      border-radius: 8px;
+      border: 1px solid #E5E7EB;
+      background-color: #FFFFFF;
+      color: #000000;
+      font-size: 14px;
+    }
 
-.form-container textarea {
-  height: 120px;
-  resize: none;
-}
+    .form-container textarea {
+      height: 120px;
+      resize: none;
+    }
 
-.form-container input::placeholder,
-.form-container textarea::placeholder {
-  color: #6B7280;
-}
+    .form-container input::placeholder,
+    .form-container textarea::placeholder {
+      color: #6B7280;
+    }
 
-.form-container button {
-  width: 100%;
-  padding: 15px;
-  font-size: 16px;
-  font-weight: bold;
-  background-color: #FFFFFF;
-  color: #000000;
-  border: none;
-  border-radius: 8px;
-  cursor: pointer;
-  transition: all 0.3s ease;
-}
+    .form-container button {
+      width: 100%;
+      padding: 15px;
+      font-size: 16px;
+      font-weight: bold;
+      background-color: #FFFFFF;
+      color: #000000;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
 
-.form-container button:hover {
-  background-color: #E5E7EB;
-  color: #000000;
-}
+    .form-container button:hover {
+      background-color: #E5E7EB;
+      color: #000000;
+    }
 
-.form-container a {
-  color: #3B82F6;
-  text-decoration: none;
-  font-size: 14px;
-  margin-top: 10px;
-  display: block;
-  text-align: right;
-}
+    .form-container a {
+      color: #3B82F6;
+      text-decoration: none;
+      font-size: 14px;
+      margin-top: 10px;
+      display: block;
+      text-align: right;
+    }
 
-.form-container a:hover {
-  text-decoration: underline;
-}
+    .form-container a:hover {
+      text-decoration: underline;
+    }
   </style>
   <!-- Firebase SDKs -->
   <script src="https://www.gstatic.com/firebasejs/8.0.0/firebase-app.js"></script>
   <script src="https://www.gstatic.com/firebasejs/8.0.0/firebase-database.js"></script>
+  <script>
+    function formatDOBInput(dobInput) {
+      var input = dobInput.value.replace(/\D/g, ''); // Removes non-digits
+      if (input.length > 6) input = input.substring(0, 6); // Trims to 6 characters
+      var formatted = input.replace(/(\d{2})(\d{2})(\d{2})/, '$1/$2/$3');
+      dobInput.value = formatted;
+    }
+  </script>
 </head>
 <body>
-<div class="banner">Muse</div>
-<div class="form-container">
-  <h1>Artist Membership Application</h1>
-  <form id="artistForm">
-    <label for="fullName">Full Name</label>
-    <input type="text" id="fullName" placeholder="Your full name" required>
+  <div class="banner">Muse</div>
+  <div class="form-container">
+    <h1>Artist Membership Application</h1>
+    <form id="artistForm">
+      <label for="fullName">Full Name</label>
+      <input type="text" id="fullName" placeholder="Your full name" required>
 
-    <label for="age">Date of birth</label>
-    <input type="text" id="age" placeholder="Your birthday" required>
+      <label for="dobInput">Date of birth</label>
+      <input type="text" id="dobInput" name="dobInput" placeholder="MM/DD/YY" oninput="formatDOBInput(this);" required maxlength="8">
 
-    <label for="phonenumber">Phone Number</label>
-    <input type="text" id="phonenumber" placeholder="Your phone number" required>
+      <label for="phonenumber">Phone Number</label>
+      <input type="text" id="phonenumber" placeholder="Your phone number" required>
 
-    <label for="email">Email</label>
-    <input type="text" id="email" placeholder="Your email" required>
+      <label for="email">Email</label>
+      <input type="text" id="email" placeholder="Your email" required>
 
-    <label for="creativeField">Creative Field</label>
-    <select id="creativeField" required>
-      <option value="" disabled selected>Select your creative field</option>
-      <option value="music-artist">Music Artist</option>
-      <option value="visual-arts">Visual Arts</option>
-      <option value="writing">Writing</option>
-      <option value="performance-arts">Performance Arts</option>
-      <option value="fashion-designer">Fashion Designer</option>
-      <option value="photographer">Photographer</option>
-      <option value="videographer">Videographer</option>
-      <option value="music-producer">Music Producer</option>
-      <option value="furniture-designer">Furniture Designer</option>
-      <option value="filmmaker">Filmmaker</option>
-      <option value="graphic-designer">Graphic Designer</option>
-      <option value="model">Model</option>
-      <option value="journalist">Journalist</option>
-      <option value="dj">DJ</option>
-      <option value="boutique">Boutique</option>
-    </select>
+      <label for="creativeField">Creative Field</label>
+      <select id="creativeField" required>
+        <option value="" disabled selected>Select your creative field</option>
+        <option value="music-artist">Music Artist</option>
+        <option value="visual-arts">Visual Arts</option>
+        <option value="writing">Writing</option>
+        <option value="performance-arts">Performance Arts</option>
+        <option value="fashion-designer">Fashion Designer</option>
+        <option value="photographer">Photographer</option>
+        <option value="videographer">Videographer</option>
+        <option value="music-producer">Music Producer</option>
+        <option value="furniture-designer">Furniture Designer</option>
+        <option value="filmmaker">Filmmaker</option>
+        <option value="graphic-designer">Graphic Designer</option>
+        <option value="model">Model</option>
+        <option value="journalist">Journalist</option>
+        <option value="dj">DJ</option>
+        <option value="boutique">Boutique</option>
+      </select>
 
-    <label for="instagramHandle">Instagram Handle</label>
-    <input type="text" id="instagramHandle" placeholder="@yourusername" required>
+      <label for="instagramHandle">Instagram Handle</label>
+      <input type="text" id="instagramHandle" placeholder="@yourusername" required>
 
-    <label for="portfolioUrl">Portfolio URL</label>
-    <input type="text" id="portfolioUrl" placeholder="https://your-portfolio.com">
+      <label for="portfolioUrl">Portfolio URL</label>
+      <input type="text" id="portfolioUrl" placeholder="https://your-portfolio.com">
 
-    <label for="aboutYou">About You</label>
-    <textarea id="aboutYou" placeholder="Tell us about yourself" required></textarea>
+      <label for="aboutYou">About You</label>
+      <textarea id="aboutYou" placeholder="Tell us about yourself" required></textarea>
 
-    <!-- Checkbox for terms and conditions -->
-    <label for="termsAgree">
-      <input type="checkbox" id="termsAgree" required>
-       <a href="terms.html" target="_blank"> I agree to the terms and conditions</a>
-    </label>
+      <!-- Checkbox for terms and conditions -->
+      <label for="termsAgree">
+        <input type="checkbox" id="termsAgree" required>
+        <a href="terms.html" target="_blank">I agree to the terms and conditions</a>
+      </label>
 
-    <button type="submit">Submit Application</button>
-  </form>
-</div>
-<script>
-  // Your web app's Firebase configuration
-  const firebaseConfig = {
-    apiKey: "AIzaSyB6cbUJWXsZVgQDWHkYvnRTXGxvP23aI-s",
-    authDomain: "myproject-111-37a6f.firebaseapp.com",
-    databaseURL: "https://myproject-111-37a6f-default-rtdb.firebaseio.com/",
-    projectId: "myproject-111-37a6f",
-    storageBucket: "myproject-111-37a6f.appspot.com",
-    messagingSenderId: "299485718150",
-    appId: "1:299485718150:web:49111f7d670aee2e269307",
-    measurementId: "G-MES7YXESBQ"
-  };
-
-  // Initialize Firebase
-  firebase.initializeApp(firebaseConfig);
-
-  document.getElementById('artistForm').addEventListener('submit', function(event) {
-    event.preventDefault(); // Prevent default form submission behavior
-    const formData = {
-      fullName: document.getElementById('fullName').value,
-      age: document.getElementById('age').value,
-      phonenumber: document.getElementById('phonenumber').value,
-      email: document.getElementById('email').value,
-      creativeField: document.getElementById('creativeField').value,
-      instagramHandle: document.getElementById('instagramHandle').value,
-      portfolioUrl: document.getElementById('portfolioUrl').value,
-      aboutYou: document.getElementById('aboutYou').value
+      <button type="submit">Submit Application</button>
+    </form>
+  </div>
+  <script>
+    // Initialize Firebase
+    const firebaseConfig = {
+      apiKey: "AIzaSyB6cbUJWXsZVgQDWHkYvnRTXGxvP23aI-s",
+      authDomain: "myproject-111-37a6f.firebaseapp.com",
+      databaseURL: "https://myproject-111-37a6f-default-rtdb.firebaseio.com/",
+      projectId: "myproject-111-37a6f",
+      storageBucket: "myproject-111-37a6f.appspot.com",
+      messagingSenderId: "299485718150",
+      appId: "1:299485718150:web:49111f7d670aee2e269307",
+      measurementId: "G-MES7YXESBQ"
     };
+    firebase.initializeApp(firebaseConfig);
 
-    // Save the data to Firebase
-    firebase.database().ref('artists').push().set(formData).then(() => {
-      console.log('Data saved successfully!');
-      window.location.href = 'After_submit_profile.html'; // Redirect after saving data
-    }).catch(error => {
-      console.log('Error saving data: ', error);
+    document.getElementById('artistForm').addEventListener('submit', function(event) {
+      event.preventDefault(); // Prevent default form submission behavior
+      const formData = {
+        fullName: document.getElementById('fullName').value,
+        dobInput: document.getElementById('dobInput').value,
+        phonenumber: document.getElementById('phonenumber').value,
+        email: document.getElementById('email').value,
+        creativeField: document.getElementById('creativeField').value,
+        instagramHandle: document.getElementById('instagramHandle').value,
+        portfolioUrl: document.getElementById('portfolioUrl').value,
+        aboutYou: document.getElementById('aboutYou').value
+      };
+
+      // Save the data to Firebase
+      firebase.database().ref('artists').push().set(formData).then(() => {
+        console.log('Data saved successfully!');
+        window.location.href = 'After_submit_profile.html'; // Redirect after saving data
+      }).catch(error => {
+        console.log('Error saving data: ', error);
+      });
     });
-  });
-</script>
+  </script>
 </body>
 </html>
-
